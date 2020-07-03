@@ -17,11 +17,11 @@ class ListItem extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <a href="">
+            <a href="#">
                 <div class="container center">
                     <div class="card">
                         <h6>${dateFormat(this._item.utcDate, "dd mmmm yyyy")}</h6>
-                        <p>Mumbai</p>
+                        <p>${dateFormat(this._item.utcDate, "HH:MM")}</p>
                         <div class="container">
                             <div class="row">
                                 <div class="logo col s4">
@@ -29,7 +29,7 @@ class ListItem extends HTMLElement {
                                     <p>${this._item.homeTeam.name}</p>
                                 </div>
                                 <div class="score  col s4">
-                                    <h2>${this._item.score.fullTime.homeTeam}-${this._item.score.fullTime.awayTeam}<</h2>
+                                    <h2>${this._item.score.fullTime.homeTeam}-${this._item.score.fullTime.awayTeam}</h2>
                                     <h5>FINAL</h5>
                                 </div>
                                 <div class="logo  col s4">

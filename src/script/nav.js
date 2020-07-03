@@ -1,3 +1,5 @@
+import main from "./index-controller.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     // Activate sidebar nav
     const elems = document.querySelectorAll(".sidenav");
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const content = document.querySelector("#body-content");
                 if (this.status == 200) {
                     content.innerHTML = xhttp.responseText;
+                    main();
                 } else if (this.status == 404) {
                     content.innerHTML = "<p>Halaman tidak ditemukan.</p>";
                 } else {

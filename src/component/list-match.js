@@ -1,6 +1,6 @@
 import './list-item.js';
 
-class MovieList extends HTMLElement {
+class MatchList extends HTMLElement {
     set items(items) {
         this._items = items;
         this.render();
@@ -25,4 +25,4 @@ class MovieList extends HTMLElement {
     }
 }
 
-customElements.define("list-movie", MovieList);
+customElements.define("list-match", MatchList);
