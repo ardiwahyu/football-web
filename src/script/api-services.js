@@ -1,4 +1,6 @@
-const baseUrl = "https://api.football-data.org/v2/";
+import logos from "../data/data-logo.js";
+
+const baseUrl = "https://api.football-data.org/v2";
 const token = "b58599afa2e04f5b9b56d9e7eeb76686";
 
 function status(response) {
@@ -31,7 +33,26 @@ class ApiServices {
             .then(function (data) {
                 return data
             })
-            .catch(error);
+            .catch(error)
+
+    }
+
+    static getLogo(id) {
+        const url = (resolve, reject) => {
+            for (let i = 0; i < logos.length; i++) {
+                if (logos[i].id == id) {
+                    resolve(logos[i].logo);
+                }
+            }
+            reject("/src/img/icon.jpg")
+        }
+        const urlPromise = new Promise(url);
+        return urlPromise
+            .then(function (data) {
+                return data;
+            }).catch(function (error) {
+                return error;
+            })
 
     }
 }

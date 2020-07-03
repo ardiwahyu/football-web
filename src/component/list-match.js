@@ -6,22 +6,13 @@ class MatchList extends HTMLElement {
         this.render();
     }
 
-    set itemLogo1(logo1) {
-        this._logo1 = logo1;
-    }
-
-    set itemLogo2(logo2) {
-        this._logo2 = logo2;
-    }
-
     render() {
         this.innerHTML = ``;
-        this._items.forEach(item => {
+        for (let i = 0; i < 10; i++) {
             const listItemElement = document.createElement("list-item");
-            listItemElement.itemType = this._type;
-            listItemElement.item = item;
+            listItemElement.item = this._items[i];
             this.appendChild(listItemElement);
-        });
+        }
     }
 }
 
