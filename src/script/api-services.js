@@ -34,7 +34,6 @@ class ApiServices {
                 return data
             })
             .catch(error)
-
     }
 
     static getLogo(id) {
@@ -54,6 +53,21 @@ class ApiServices {
                 return error;
             })
 
+    }
+
+    static getDetail(id) {
+        const url = `${baseUrl}/matches/${id}`;
+        return fetch(url, {
+            headers: {
+                "X-Auth-Token": token
+            }
+        })
+            .then(status)
+            .then(json)
+            .then(function (data) {
+                return data
+            })
+            .catch(error)
     }
 }
 

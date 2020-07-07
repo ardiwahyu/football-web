@@ -15,7 +15,7 @@ class ListItem extends HTMLElement {
 
     async render() {
         this.innerHTML = `
-            <a href="#">
+            <a href="detail.html?id=${this._item.id}">
                 <div class="container center">
                     <div class="card">
                         <h6>${dateFormat(this._item.utcDate, "dd mmmm yyyy")}</h6>

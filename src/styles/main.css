@@ -6,6 +6,14 @@
     margin: 0;
 }
 
+#logo-container {
+    font-size: 24px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
 .container .card {
     padding: 8px;
     color: black;
@@ -27,6 +35,12 @@
     max-height: 150px;
 }
 
+.logo-detail img {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+}
+
 .logo p {
     margin-top: 4px;
     font-size: medium;
@@ -35,4 +49,12 @@
 .container-match {
     display: flex;
     align-items: center;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mt-20 {
+    margin-top: 20px;
 }
