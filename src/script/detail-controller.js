@@ -1,13 +1,17 @@
 import ApiServices from './api-services.js';
+import LocalServices from './local-services.js';
 import "../component/list-match.js";
 const dateFormat = require('dateformat');
 
 function detail() {
-    const matchListElement = document.querySelector("list-match");
 
+    const btnSave = document.getElementById("btn-save");
+
+    let result;
     const getContent = async () => {
         const url = new URL(window.location)
-        const result = await ApiServices.getDetail(url.searchParams.get("id"));
+        result = await ApiServices.getDetail(url.searchParams.get("id"));
+        cekIfFavorite(result);
         renderResult(result);
     }
 
@@ -91,7 +95,33 @@ function detail() {
         `
     }
 
+    async function cekIfFavorite(result) {
+        const isFavorite = await LocalServices.getMatch(result.match.id);
+        if (isFavorite != null) {
+            btnSave.classList.remove("black");
+            btnSave.classList.add("red");
+        } else {
+            btnSave.classList.remove("red");
+            btnSave.classList.add("black");
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
+
+        btnSave.addEventListener("click", function () {
+            if (btnSave.classList.contains("black")) {
+                LocalServices.saveMatch(result);
+                M.toast({ html: 'Berhasil menyimpan match!' });
+                btnSave.classList.remove("black");
+                btnSave.classList.add("red");
+            } else {
+                LocalServices.removeMatch(result.match.id);
+                M.toast({ html: 'Menghapus dari favorite!' });
+                btnSave.classList.remove("red");
+                btnSave.classList.add("black");
+            }
+        });
+
         getContent();
     });
 }
