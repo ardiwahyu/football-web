@@ -8,8 +8,8 @@ function detail() {
     const btnSave = document.getElementById("btn-save");
 
     let result;
+    const url = new URL(window.location)
     const getContent = async () => {
-        const url = new URL(window.location)
         result = await ApiServices.getDetail(url.searchParams.get("id"));
         cekIfFavorite(result);
         renderResult(result);
@@ -104,6 +104,7 @@ function detail() {
             btnSave.classList.remove("red");
             btnSave.classList.add("black");
         }
+        btnSave.classList.remove("hidden");
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -116,9 +117,13 @@ function detail() {
                 btnSave.classList.add("red");
             } else {
                 LocalServices.removeMatch(result.match.id);
-                M.toast({ html: 'Menghapus dari favorite!' });
+                M.toast({ html: 'Dihapus dari favorite!' });
                 btnSave.classList.remove("red");
                 btnSave.classList.add("black");
+
+                if (url.searchParams.get('from') == "favorite") {
+                    window.location.href = `${window.location.origin}#favorite`;
+                }
             }
         });
 

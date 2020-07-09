@@ -35,7 +35,7 @@ class LocalServices {
         });
     }
 
-    static getAllMatch(id) {
+    static getAllMatch() {
         return dbPromised.then(function (db) {
             const tx = db.transaction("matches", "readonly");
             const store = tx.objectStore("matches");

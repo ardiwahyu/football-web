@@ -13,9 +13,16 @@ class ListItem extends HTMLElement {
         this.render();
     }
 
+    set from(from) {
+        this._from = from;
+    }
+
     async render() {
+        if (this._from == "favorite") {
+            this._item = this._item.match;
+        }
         this.innerHTML = `
-            <a href="detail.html?id=${this._item.id}">
+            <a href="detail.html?id=${this._item.id}&from=${this._from}">
                 <div class="container center">
                     <div class="card">
                         <h6>${dateFormat(this._item.utcDate, "dd mmmm yyyy")}</h6>

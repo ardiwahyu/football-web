@@ -31,7 +31,7 @@ class ApiServices {
             .then(status)
             .then(json)
             .then(function (data) {
-                return data
+                return data.matches;
             })
             .catch(error)
     }

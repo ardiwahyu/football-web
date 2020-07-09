@@ -42,14 +42,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/nav.html",
             filename: "nav.html"
-        }),
-        new HtmlWebpackPlugin({
-            template: "./src/pages/home.html",
-            filename: "home.html"
-        }),
-        new HtmlWebpackPlugin({
-            template: "./src/pages/favorite.html",
-            filename: "favorite.html"
         })
     ]
 };
