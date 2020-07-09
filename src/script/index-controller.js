@@ -4,10 +4,14 @@ import "../component/list-match.js";
 
 function main() {
     const matchListElement = document.querySelector("list-match");
+    const loader = document.querySelectorAll(".overlay", ".spanner");
     let page = window.location.hash.substr(1);
     if (page == "") page = "home";
 
     const getContent = async (page) => {
+        loader.forEach(element => {
+            element.classList.add("show");
+        })
         let result;
         if (page == "home") {
             result = await ApiServices.getContent(2015);
@@ -15,6 +19,9 @@ function main() {
             result = await LocalServices.getAllMatch();
         }
         renderResult(result);
+        loader.forEach(element => {
+            element.classList.remove("show");
+        })
     }
 
     const renderResult = (result) => {

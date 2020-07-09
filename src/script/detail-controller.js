@@ -6,13 +6,17 @@ const dateFormat = require('dateformat');
 function detail() {
 
     const btnSave = document.getElementById("btn-save");
+    const loader = document.querySelector(".overlay");
 
     let result;
-    const url = new URL(window.location)
+    const url = new URL(window.location);
+
     const getContent = async () => {
+        loader.classList.add("show");
         result = await ApiServices.getDetail(url.searchParams.get("id"));
         cekIfFavorite(result);
         renderResult(result);
+        loader.classList.remove("show");
     }
 
     async function getLogo(id) {
