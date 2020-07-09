@@ -108,6 +108,10 @@ function detail() {
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+        const btnBack = document.querySelector("#back");
+        btnBack.addEventListener("click", function () {
+            btnBack.setAttribute("href", `${window.location.origin}#${url.searchParams.get("from")}`);
+        });
 
         btnSave.addEventListener("click", function () {
             if (btnSave.classList.contains("black")) {
@@ -120,10 +124,6 @@ function detail() {
                 M.toast({ html: 'Dihapus dari favorite!' });
                 btnSave.classList.remove("red");
                 btnSave.classList.add("black");
-
-                if (url.searchParams.get('from') == "favorite") {
-                    window.location.href = `${window.location.origin}#favorite`;
-                }
             }
         });
 
