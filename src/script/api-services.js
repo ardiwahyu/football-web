@@ -21,22 +21,24 @@ function error(error) {
 
 class ApiServices {
 
-    static getContent(id) {
+    static async getContent(id) {
         const url = `${baseUrl}/competitions/${id}/matches`;
-        return fetch(url, {
-            headers: {
-                "X-Auth-Token": token
-            }
-        })
-            .then(status)
-            .then(json)
-            .then(function (data) {
-                return data.matches;
-            })
-            .catch(error)
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    "X-Auth-Token": token
+                }
+            });
+            const response_1 = await status(response);
+            const data = await json(response_1);
+            return data.matches;
+        }
+        catch (error) {
+            return error(error);
+        }
     }
 
-    static getLogo(id) {
+    static async getLogo(id) {
         const url = (resolve, reject) => {
             for (let i = 0; i < logos.length; i++) {
                 if (logos[i].id == id) {
@@ -46,28 +48,31 @@ class ApiServices {
             reject("/src/img/icon.jpg")
         }
         const urlPromise = new Promise(url);
-        return urlPromise
-            .then(function (data) {
-                return data;
-            }).catch(function (error) {
-                return error;
-            })
+        try {
+            const data = await urlPromise;
+            return data;
+        }
+        catch (error) {
+            return error;
+        }
 
     }
 
-    static getDetail(id) {
+    static async getDetail(id) {
         const url = `${baseUrl}/matches/${id}`;
-        return fetch(url, {
-            headers: {
-                "X-Auth-Token": token
-            }
-        })
-            .then(status)
-            .then(json)
-            .then(function (data) {
-                return data
-            })
-            .catch(error)
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    "X-Auth-Token": token
+                }
+            });
+            const response_1 = await status(response);
+            const data = await json(response_1);
+            return data;
+        }
+        catch (error) {
+            return error(error);
+        }
     }
 }
 
