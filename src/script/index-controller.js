@@ -19,7 +19,6 @@ function main() {
             result = await LocalServices.getAllMatch();
         }
 
-        console.log(result);
         renderResult(result);
         loader.forEach(element => {
             element.classList.remove("show");

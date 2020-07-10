@@ -22,27 +22,27 @@ function error(error) {
 class ApiServices {
 
     static getContent(id) {
-        const url = `${baseUrl}/competitions/${id}/matches`;
-        if ('caches' in window) {
-            caches.match(url).then(async function (response) {
-                const response_1 = await status(response);
-                const data = await json(await status(response_1));
-                console.log(data);
-                return data.matches;
-            })
-        }
-        fetch(url, {
-            headers: {
-                "X-Auth-Token": token
+        return new Promise((resolve, reject) => {
+            const url = `${baseUrl}/competitions/${id}/matches`;
+            if ('caches' in window) {
+                caches.match(url).then(async function (response) {
+                    const response_1 = await status(response);
+                    const data = await json(await status(response_1));
+                    resolve(data.matches);
+                })
             }
-        })
-            .then(status)
-            .then(json)
-            .then(function (data) {
-                console.log(data);
-                return data.matches
+            fetch(url, {
+                headers: {
+                    "X-Auth-Token": token
+                }
             })
-            .catch(error);
+                .then(status)
+                .then(json)
+                .then(function (data) {
+                    resolve(data.matches);
+                })
+                .catch(error);
+        })
     }
 
     static async getLogo(id) {
@@ -66,25 +66,27 @@ class ApiServices {
     }
 
     static async getDetail(id) {
-        const url = `${baseUrl}/matches/${id}`;
-        if ('caches' in window) {
-            caches.match(url).then(async function (response) {
-                const response_1 = await status(response);
-                const data = await json(response_1);
-                return data.matches;
-            })
-        }
-        fetch(url, {
-            headers: {
-                "X-Auth-Token": token
+        return new Promise((resolve, reject) => {
+            const url = `${baseUrl}/matches/${id}`;
+            if ('caches' in window) {
+                caches.match(url).then(async function (response) {
+                    const response_1 = await status(response);
+                    const data = await json(response_1);
+                    resolve(data);
+                })
             }
-        })
-            .then(status)
-            .then(json)
-            .then(function (data) {
-                return data
+            fetch(url, {
+                headers: {
+                    "X-Auth-Token": token
+                }
             })
-            .catch(error);
+                .then(status)
+                .then(json)
+                .then(function (data) {
+                    resolve(data);
+                })
+                .catch(error);
+        })
     }
 }
 
