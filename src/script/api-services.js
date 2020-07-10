@@ -21,21 +21,28 @@ function error(error) {
 
 class ApiServices {
 
-    static async getContent(id) {
+    static getContent(id) {
         const url = `${baseUrl}/competitions/${id}/matches`;
-        try {
-            const response = await fetch(url, {
-                headers: {
-                    "X-Auth-Token": token
-                }
-            });
-            const response_1 = await status(response);
-            const data = await json(response_1);
-            return data.matches;
+        if ('caches' in window) {
+            caches.match(url).then(async function (response) {
+                const response_1 = await status(response);
+                const data = await json(await status(response_1));
+                console.log(data);
+                return data.matches;
+            })
         }
-        catch (error) {
-            return error(error);
-        }
+        fetch(url, {
+            headers: {
+                "X-Auth-Token": token
+            }
+        })
+            .then(status)
+            .then(json)
+            .then(function (data) {
+                console.log(data);
+                return data.matches
+            })
+            .catch(error);
     }
 
     static async getLogo(id) {
@@ -60,19 +67,24 @@ class ApiServices {
 
     static async getDetail(id) {
         const url = `${baseUrl}/matches/${id}`;
-        try {
-            const response = await fetch(url, {
-                headers: {
-                    "X-Auth-Token": token
-                }
-            });
-            const response_1 = await status(response);
-            const data = await json(response_1);
-            return data;
+        if ('caches' in window) {
+            caches.match(url).then(async function (response) {
+                const response_1 = await status(response);
+                const data = await json(response_1);
+                return data.matches;
+            })
         }
-        catch (error) {
-            return error(error);
-        }
+        fetch(url, {
+            headers: {
+                "X-Auth-Token": token
+            }
+        })
+            .then(status)
+            .then(json)
+            .then(function (data) {
+                return data
+            })
+            .catch(error);
     }
 }
 

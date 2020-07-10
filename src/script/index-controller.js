@@ -18,6 +18,8 @@ function main() {
         } else if (page == "favorite") {
             result = await LocalServices.getAllMatch();
         }
+
+        console.log(result);
         renderResult(result);
         loader.forEach(element => {
             element.classList.remove("show");

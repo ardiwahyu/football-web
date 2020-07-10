@@ -47,8 +47,6 @@ module.exports = {
         new ServiceWorkerWebpackPlugin({
             entry: path.join(__dirname, 'src/service-worker.js')
         }),
-        new ManifestPlugin({
-            fileName: 'src/manifest.json'
-        })
+        new ManifestPlugin()
     ]
 };
