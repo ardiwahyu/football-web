@@ -16,7 +16,8 @@ const urlsToCache = [
     "./src/icon/icon.png",
     "./src/data/data-logo.js",
     "./src/component/list-item.js",
-    "./src/component/list-match.js"
+    "./src/component/list-match.js",
+    "./src/manifest.json"
 ];
 
 self.addEventListener("install", function (event) {

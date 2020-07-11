@@ -1,5 +1,4 @@
 const ServiceWorkerWebpackPlugin = require("serviceworker-webpack-plugin");
-const ManifestPlugin = require('webpack-manifest-plugin');
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const package = require("./package.json");
@@ -46,7 +45,6 @@ module.exports = {
         }),
         new ServiceWorkerWebpackPlugin({
             entry: path.join(__dirname, 'src/service-worker.js')
-        }),
-        new ManifestPlugin()
+        })
     ]
 };
