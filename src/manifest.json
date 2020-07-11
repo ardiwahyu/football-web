@@ -1,5 +1,6 @@
 {
     "name": "Football Match",
+    "gcm_sender_id": "1098468607644",
     "short_name": "Football Match",
     "description": "Aplikasi Football Match",
     "start_url": "/index.html",
