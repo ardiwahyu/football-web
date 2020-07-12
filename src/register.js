@@ -49,7 +49,7 @@ function showNotifikasi() {
     const title = 'Notifikasi Sederhana';
     const options = {
         'body': 'Ini adalah konten notifikasi. \nBisa menggunakan baris baru.',
-        'icon': '/icon/icon.png'
+        'icon': './src/icon/icon.png'
     }
     if (Notification.permission === 'granted') {
         navigator.serviceWorker.ready.then(function (registration) {
