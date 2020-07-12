@@ -18,7 +18,7 @@ var pushSubscription = {
         "auth": "Y49r5+NksFjhbYbqcUWEbQ=="
     }
 };
-var payload = 'Selamat! Aplikasi Anda sudah dapat menerima push notifikasi!';
+var payload = '{"title": "Footbal Match", "body": "Waktunya menonton bola!"}';
 
 var options = {
     gcmAPIKey: '1098468607644',

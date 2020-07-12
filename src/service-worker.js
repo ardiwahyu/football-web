@@ -66,12 +66,12 @@ self.addEventListener("activate", function (event) {
 self.addEventListener('push', function (event) {
     var body;
     if (event.data) {
-        body = event.data.text();
+        body = JSON.parse(event.data.text());
     } else {
         body = 'Push message no payload';
     }
     var options = {
-        body: body,
+        body: body.body,
         icon: './src/icon/icon.png',
         vibrate: [100, 50, 100],
         data: {
@@ -80,6 +80,6 @@ self.addEventListener('push', function (event) {
         }
     };
     event.waitUntil(
-        self.registration.showNotification('Push Notification', options)
+        self.registration.showNotification(body.title, options)
     );
 });
