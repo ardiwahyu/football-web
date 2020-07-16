@@ -7,17 +7,17 @@ const urlsToCache = [
     "/index.bundle.js",
     "/detail.bundle.js",
     "/vendor.bundle.js",
+    "/icon_512x512.png",
+    "/manifest.json",
     "./src/register.js",
     "./src/styles/main.css",
     "./src/script/api-services.js",
     "./src/script/local-services.js",
     "./src/script/index-controller.js",
     "./src/script/detail-controller.js",
-    "./src/icon/icon.png",
     "./src/data/data-logo.js",
     "./src/component/list-item.js",
     "./src/component/list-match.js",
-    "./src/manifest.json"
 ];
 
 self.addEventListener("install", function (event) {
@@ -64,14 +64,21 @@ self.addEventListener("activate", function (event) {
 });
 
 self.addEventListener('push', function (event) {
-    var body;
+    let body, title;
     if (event.data) {
-        body = JSON.parse(event.data.text());
+        try {
+            const json = JSON.parse(event.data.text());
+            body = json.body;
+            title = json.title;
+        } catch{
+            body = event.data.text();
+            title = ''
+        }
     } else {
         body = 'Push message no payload';
     }
     var options = {
-        body: body.body,
+        body: body,
         icon: './src/icon/icon.png',
         vibrate: [100, 50, 100],
         data: {
@@ -80,6 +87,6 @@ self.addEventListener('push', function (event) {
         }
     };
     event.waitUntil(
-        self.registration.showNotification(body.title, options)
+        self.registration.showNotification(title, options)
     );
 });
