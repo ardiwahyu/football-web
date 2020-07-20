@@ -42,7 +42,7 @@ self.addEventListener('push', function (event) {
     }
     var options = {
         body: body,
-        icon: '/icon_512x512.png',
+        icon: './src/icon/icon.png',
         vibrate: [100, 50, 100],
         data: {
             dateOfArrival: Date.now(),

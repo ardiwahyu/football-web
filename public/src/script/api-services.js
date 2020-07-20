@@ -52,7 +52,7 @@ class ApiServices {
                     resolve(logos[i].logo);
                 }
             }
-            reject("/icon_512x512.png")
+            reject("icon_512x512.png")
         }
         const urlPromise = new Promise(url);
         try {

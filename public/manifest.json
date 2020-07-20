@@ -1,0 +1,18 @@
+{
+  "icons": [
+    {
+      "src": "icon_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "name": "Football Match",
+  "short_name": "Football Match",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "/index.html",
+  "gcm_sender_id": "1098468607644",
+  "description": "Aplikasi Football Match",
+  "background_color": "#00897B",
+  "theme_color": "#00897B"
+}

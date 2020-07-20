@@ -1,0 +1,12 @@
+var serviceWorkerOption = {
+  "assets": [
+    "/detail.bundle.js",
+    "/index.bundle.js",
+    "/vendor.bundle.js",
+    "/index.html",
+    "/detail.html",
+    "/nav.html"
+  ]
+};
+        
+        !function(t){var i={};function n(e){if(i[e])return i[e].exports;var r=i[e]={i:e,l:!1,exports:{}};return t[e].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=t,n.c=i,n.d=function(e,r,t){n.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(r,e){if(1&e&&(r=n(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var t=Object.create(null);if(n.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var i in r)n.d(t,i,function(e){return r[e]}.bind(null,i));return t},n.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(r,"a",r),r},n.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},n.p="",n(n.s=0)}([function(e,r){importScripts("https://storage.googleapis.com/workbox-cdn/releases/5.1.3/workbox-sw.js"),workbox.precaching.precacheAndRoute([{url:"/",revision:"1"},{url:"/index.html",revision:"1"},{url:"/detail.html",revision:"1"},{url:"/nav.html",revision:"1"},{url:"/index.bundle.js",revision:"1"},{url:"/detail.bundle.js",revision:"1"},{url:"/vendor.bundle.js",revision:"1"},{url:"/icon_512x512.png",revision:"1"},{url:"/manifest.json",revision:"1"},{url:"./src/register.js",revision:"1"},{url:"./src/styles/main.css",revision:"1"},{url:"./src/script/api-services.js",revision:"1"},{url:"./src/script/local-services.js",revision:"1"},{url:"./src/script/index-controller.js",revision:"1"},{url:"./src/script/detail-controller.js",revision:"1"},{url:"./src/data/data-logo.js",revision:"1"},{url:"./src/component/list-item.js",revision:"1"},{url:"./src/component/list-match.js",revision:"1"}],{ignoreURLParametersMatching:[/.*/]}),workbox.routing.registerRoute(new RegExp("https://api.football-data.org/v2"),new workbox.strategies.StaleWhileRevalidate),self.addEventListener("push",function(r){if(r.data)try{var e=JSON.parse(r.data.text()),t=e.body,i=e.title}catch(e){t=r.data.text(),i=""}else t="Push message no payload";var n={body:t,icon:"/icon_512x512.png",vibrate:[100,50,100],data:{dateOfArrival:Date.now(),primaryKey:1}};r.waitUntil(self.registration.showNotification(i,n))})}]);
